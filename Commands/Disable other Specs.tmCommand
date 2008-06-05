@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+current_line = ENV["TM_LINE_NUMBER"].to_i - 1
+STDIN.read.each_with_index do |line, index|
+  line = case index
+    when current_line:
+      line.gsub(/xspecify/, "specify")
+    else line.gsub(/^(\s+)(specify)/x, "\\1x\\2")
+  end
+  print line
+end
+</string>
+	<key>fallbackInput</key>
+	<string>document</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@X</string>
+	<key>name</key>
+	<string>Disable other Specs</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.ruby.test-spec</string>
+	<key>uuid</key>
+	<string>FC874E8E-D423-4E55-9CB1-C6A4581C021A</string>
+</dict>
+</plist>

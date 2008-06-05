@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>test.rb</string>
+	</array>
+	<key>firstLineMatch</key>
+	<string>^require.*test_helper</string>
+	<key>foldingStartMarker</key>
+	<string>(?x)^
+	    (\s*+
+	        (module|class|def
+	        |unless|if
+	        |case
+	        |begin
+	        |for|while|until
+			 |^=begin
+	        |(  "(\\.|[^"])*+"          # eat a double quoted string
+	         | '(\\.|[^'])*+'        # eat a single quoted string
+	         |   [^#"']                # eat all but comments and strings
+	         )*
+	         (                        \s   (do|begin|case)
+	         | (?&lt;!\$)[-+=&amp;|*/~%^&lt;&gt;~] \s*+ (if|unless)
+	         )
+	        )\b
+	        (?! [^;]*+ ; .*? \bend\b )
+	    |(  "(\\.|[^"])*+"              # eat a double quoted string
+	     | '(\\.|[^'])*+'            # eat a single quoted string
+	     |   [^#"']                    # eat all but comments and strings
+	     )*
+	     ( \{ (?!  [^}]*+ \} )
+	     | \[ (?! [^\]]*+ \] )
+	     )
+	    ).*$
+	|   [#] .*? \(fold\) \s*+ $         # Sune’s special marker
+	</string>
+	<key>foldingStopMarker</key>
+	<string>(?x)
+		(   (^|;) \s*+ end   \s*+ ([#].*)? $
+		|   (^|;) \s*+ end \. .* $
+		|   ^     \s*+ [}\]] \s*+ ([#].*)? $
+		|   [#] .*? \(end\) \s*+ $    # Sune’s special marker
+		|   ^=end
+		)</string>
+	<key>keyEquivalent</key>
+	<string>^~R</string>
+	<key>name</key>
+	<string>Test/Spec</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>include</key>
+			<string>#context</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#specify</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>source.ruby</string>
+		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>context</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*(context|xcontext)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.context.ruby.test-spec</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\b(do)\s*$</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.start-block.ruby.test-spec</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.context.ruby.test-spec</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.ruby</string>
+				</dict>
+			</array>
+		</dict>
+		<key>specify</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*(specify|xspecify)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.specify.ruby.test-spec</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\b(do)\s*$</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.start-block.ruby.test-spec</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.specify.ruby.test-spec</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.ruby</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>scopeName</key>
+	<string>source.ruby.test-spec</string>
+	<key>uuid</key>
+	<string>33074F74-5087-40D2-9090-48CA1629B2DF</string>
+</dict>
+</plist>

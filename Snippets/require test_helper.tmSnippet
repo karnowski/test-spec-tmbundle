@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>require File.dirname(__FILE__) + '/../test_helper'</string>
+	<key>name</key>
+	<string>require test_helper</string>
+	<key>scope</key>
+	<string>source.ruby.test-spec</string>
+	<key>tabTrigger</key>
+	<string>req</string>
+	<key>uuid</key>
+	<string>49897B71-80FD-4A30-B856-DD1F53F608D5</string>
+</dict>
+</plist>
