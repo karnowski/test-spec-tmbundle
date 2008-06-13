@@ -11,7 +11,7 @@
 		<key>showInSymbolList</key>
 		<integer>1</integer>
 		<key>symbolTransformation</key>
-		<string>s/^\s*(context|xcontext|describe)\s+"(.+)"\s+do\s*$/$2/</string>
+		<string>s/^\s*(context|xcontext|describe|xdescribe)\s+"(.+)"\s+do\s*$/$2/</string>
 	</dict>
 	<key>uuid</key>
 	<string>6F03C903-EA02-4164-9F24-7AFD38F7ED94</string>

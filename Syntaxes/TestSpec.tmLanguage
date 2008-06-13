@@ -68,7 +68,7 @@
 		<key>context</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(context|xcontext|describe)\b</string>
+			<string>^\s*(context|xcontext|describe|xdescribe)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
