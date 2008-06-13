@@ -8,8 +8,16 @@
 	<string>#!/usr/bin/env ruby
 
 print case str = STDIN.read
-  when /^specify$/ : "xspecify"
-  when /^xspecify$/ : "specify"
+when /^specify$/   : "xspecify"
+when /^xspecify$/  : "specify"
+when /^it$/        : "xit"
+when /^xit$/       : "it"
+when /^context$/   : "xcontext"
+when /^xcontext$/  : "context"
+when /^describe$/  : "xdescribe"
+when /^xdescribe$/ : "describe"
+else
+  str
 end
 </string>
 	<key>fallbackInput</key>
