@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string># Assumes the current file is a unittest file
+# Runs with the currently-focused method as the test name
+
+args=$(${TM_RUBY:=ruby} &lt;&lt;"EOF"
+
+n = ENV['TM_LINE_NUMBER'].to_i
+
+spec, context = nil, nil
+
+File.open(ENV['TM_FILEPATH']) do |f|
+lines     = f.read.split("\n")[0...n].reverse
+spec      = $3 || $4 if lines.find { |line| line =~ /^\s*(specify|it)\s+('(.*)'|"(.*)")+\s*(\{|do)/ }
+context   = $3 || $4 if lines.find { |line| line =~ /^\s*(context|describe)\s+('(.*)'|"(.*)")+\s*(,.+?)?(\{|do)/ }
+end
+
+puts [spec, context].inspect
+
+if !spec.empty? &amp;&amp; !context.empty?
+print "--name=\"/test_spec \\{.*#{context}\\} \\d{3} \\[#{spec}\\]/\""
+end
+EOF)
+
+if [[ -z "$args" ]]; then
+echo -e "This doesn't appear to be a TestCase class."
+exit_show_tool_tip
+fi
+
+export RUBYMATE="$TM_SUPPORT_PATH/Bundles/Ruby.tmbundle/RubyMate"
+export RUBYLIB="${RUBYMATE}/${RUBYLIB:+:$RUBYLIB}"
+"${TM_RUBY:-ruby}" -- "${RUBYMATE}/run_script.rb" $args</string>
+	<key>input</key>
+	<string>document</string>
+	<key>keyEquivalent</key>
+	<string>@R</string>
+	<key>name</key>
+	<string>Run focused test</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.ruby.test-spec</string>
+	<key>uuid</key>
+	<string>85C50D9B-2A0C-4B4B-B5DA-A04DA69CF971</string>
+</dict>
+</plist>
