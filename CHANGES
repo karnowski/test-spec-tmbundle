@@ -1,0 +1,3 @@
+
+2008-06-14: 
+* added support parity for the newer "describe" and "it" versions of "context" and "specify" in the language, shift-apple-T symbol table, and commands [Larry Karnowski]
