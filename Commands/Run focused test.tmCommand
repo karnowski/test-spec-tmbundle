@@ -32,7 +32,9 @@ echo -e "This doesn't appear to be a TestCase class."
 exit_show_tool_tip
 fi
 
-export RUBYMATE="$TM_SUPPORT_PATH/Bundles/Ruby.tmbundle/RubyMate"
+export RUBYMATE="/Applications/TextMate.app/Contents/SharedSupport/Bundles/Ruby.tmbundle/Support/RubyMate"
+
+#"$TM_SUPPORT_PATH/../Bundles/Ruby.tmbundle/RubyMate"
 export RUBYLIB="${RUBYMATE}/${RUBYLIB:+:$RUBYLIB}"
 "${TM_RUBY:-ruby}" -- "${RUBYMATE}/run_script.rb" $args</string>
 	<key>input</key>
